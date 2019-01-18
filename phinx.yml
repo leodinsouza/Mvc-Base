@@ -8,18 +8,18 @@ environments:
     production:
         adapter: mysql
         host: localhost
-        name: testing_db
-        user: root
-        pass: ''
+        name: enilastore
+        user: leo
+        pass: Cmss#2009
         port: 3306
         charset: utf8
 
     development:
         adapter: mysql
         host: localhost
-        name: testing_db
-        user: root
-        pass: ''
+        name: enilastore
+        user: leo
+        pass: Cmss#2009
         port: 3306
         charset: utf8
 
