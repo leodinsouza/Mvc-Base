@@ -16,8 +16,9 @@ class UsersMigration extends AbstractMigration
             ->addColumn('password', 'string')
             ->addColumn('address', 'text')
             ->addColumn('role', 'string')
-            ->addColumn('deleted_at', 'datetime')
+            ->addColumn('deleted_at', 'timestamp')
             ->addTimestamps()
             ->create();
+        $this->execute('ALTER TABLE `users` MODIFY COLUMN `deleted_at` TIMESTAMP NULL');
     }
 }

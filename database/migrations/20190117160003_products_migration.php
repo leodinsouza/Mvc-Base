@@ -18,8 +18,9 @@ class ProductsMigration extends AbstractMigration
             ->addColumn('sub_category_id', 'integer')
             ->addForeignKey('sub_category_id', 'sub_categories', 'id')
             ->addColumn('image_path', 'string')
-            ->addColumn('deleted_at', 'datetime')
+            ->addColumn('deleted_at', 'timestamp')
             ->addTimestamps()
             ->create();
+        $this->execute('ALTER TABLE `products` MODIFY COLUMN `deleted_at` TIMESTAMP NULL');
     }
 }

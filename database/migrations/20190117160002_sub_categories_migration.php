@@ -14,8 +14,9 @@ class SubCategoriesMigration extends AbstractMigration
             ->addColumn('slug', 'string')
             ->addColumn('category_id', 'integer')
             ->addForeignKey('category_id', 'categories', 'id')
-            ->addColumn('deleted_at', 'datetime')
+            ->addColumn('deleted_at', 'timestamp')
             ->addTimestamps()
             ->create();
+        $this->execute('ALTER TABLE `sub_categories` MODIFY COLUMN `deleted_at` TIMESTAMP NULL');
     }
 }

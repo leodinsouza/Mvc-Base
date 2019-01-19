@@ -17,8 +17,9 @@ class OrdersMigration extends AbstractMigration
             ->addColumn('total', 'float')
             ->addColumn('status', 'string')
             ->addColumn('order_number', 'string')
-            ->addColumn('deleted_at', 'datetime')
+            ->addColumn('deleted_at', 'timestamp')
             ->addTimestamps()
             ->create();
+        $this->execute('ALTER TABLE `orders` MODIFY COLUMN `deleted_at` TIMESTAMP NULL');
     }
 }

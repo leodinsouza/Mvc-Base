@@ -12,11 +12,11 @@ class PaymentsMigration extends AbstractMigration
         $table->addColumn('user_id', 'integer')
             ->addForeignKey('user_id', 'users', 'id')
             ->addColumn('order_number', 'string')
-            ->addForeignKey('order_number', 'orders', 'order_number')
             ->addColumn('amount', 'float')
             ->addColumn('status', 'string')
-            ->addColumn('deleted_at', 'datetime')
+            ->addColumn('deleted_at', 'timestamp')
             ->addTimestamps()
             ->create();
+        $this->execute('ALTER TABLE `payments` MODIFY COLUMN `deleted_at` TIMESTAMP NULL');
     }
 }

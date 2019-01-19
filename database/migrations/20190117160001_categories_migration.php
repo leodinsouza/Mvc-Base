@@ -12,8 +12,9 @@ class CategoriesMigration extends AbstractMigration
         $table->addColumn('name', 'string')
             ->addIndex(['name'], ['unique' => true])
             ->addColumn('slug', 'string')
-            ->addColumn('deleted_at', 'datetime')
+            ->addColumn('deleted_at', 'timestamp')
             ->addTimestamps()
             ->create();
+        $this->execute('ALTER TABLE `categories` MODIFY COLUMN `deleted_at` TIMESTAMP NULL');
     }
 }
